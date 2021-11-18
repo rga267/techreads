@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts-jdk11
+    privileged: true
+    ports: ['7999:8080', '50000:50000']
+    networks: [ci]
+    volumes: [./:/repositories/this-repository/:ro, /var/run/docker.sock:/var/run/docker.sock]
+
+  nexus:
+    image: sonatype/nexus3
+    privileged: true
+    networks: [ci]
+    ports: ['8081:8081']
+
+networks:
+  ci:
