@@ -25,6 +25,14 @@ public class Book {
         this.rating = rating;
     }
 
+    public Book(Book other) {
+        this.id = other.id;
+        this.url = other.url;
+        this.title = other.title;
+        this.author = other.author;
+        this.rating = other.rating;
+    }
+
     public void setAuthor(String author) {
         this.author = author;
     }
