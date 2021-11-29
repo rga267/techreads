@@ -4,18 +4,17 @@ pipeline {
     stages {
         stage('Build'){
             steps {
-                sh 'chmod +x mvnw'
-                sh './mvnw clean install'
+                sh 'mvn clean install'
             }
         }
         stage('Test'){
             steps{
-                sh './mvnw surefire:test'
+                sh 'mvn surefire:test'
             }
         }
         stage('Deploy'){
             steps{
-                echo './mvnw jar:jar deploy:deploy'
+                echo 'mvn jar:jar deploy:deploy'
             }
         }
     }
